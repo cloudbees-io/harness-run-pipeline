@@ -25,7 +25,7 @@ runs:
   steps:
     - id: invoke-harness-action
       name: invoke-harness-action
-      uses: docker://registry.saas-dev.beescloud.com/staging/harness-actions:latest
+      uses: docker://registry.saas-dev.beescloud.com/testing/harness-actions:latest
       shell: sh
       env: 
         CONFIG_JSON: '{"metaInfo":{"url":"${{ inputs.url }}","toolType":"HARNESSACTIONS","password":"${{ inputs.token }}","orgName":"${{ inputs.org-name }}","projectName":"${{ inputs.project-name }}","jobName":"${{ inputs.pipeline-name }}"}}'
