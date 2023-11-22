@@ -25,7 +25,7 @@ runs:
   steps:
     - id: invoke-harness-action
       name: invoke-harness-action
-      uses: docker://registry.saas-dev.beescloud.com/testing/harness-actions:latest
+      uses: docker://registry.saas-dev.beescloud.com/testing/harness-actions:main-c613d67cc4748331093b1739a3b158e2288c9e69
       shell: sh
       env: 
         RUN_ID: ${{ cloudbees.run_id }}
