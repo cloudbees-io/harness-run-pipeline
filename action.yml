@@ -36,5 +36,6 @@ runs:
         JWT_TOKEN: ${{ cloudbees.api.token }}
       run: |
         set -x
+        echo "${{ inputs.project-name }}"
         cd /app
         ./harness_actions_app invoke -i $CONFIG_JSON
