@@ -51,7 +51,7 @@ jobs:
   trigger-harness-workflow-using-action:
     steps:
     - name: Trigger Harness Pipeline using Cloudbees Harness Action
-      uses: calculi-corp/harness-actions
+      uses: cloudbees-io/harness-run-pipeline
       with:
         url: https://app.harness.io/
         token: ${{ secrets.HARNESS_API_TOKEN }}
