@@ -1,0 +1,39 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: "Harness Actions"
+inputs:
+  url:
+    description: 'harness url'
+    required: false
+    default: 'https://app.harness.io/'
+  token:
+    description: 'harness api  token'
+    required: true
+  org-name:
+    description: 'organization name'
+    required: true
+  project-name:
+    description: 'project name'
+    required: true
+  pipeline-name:
+    description: 'pipeline name'
+    required: true
+
+
+runs:
+  using: composite
+  steps:
+    - id: invoke-harness-action
+      name: invoke-harness-action
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/harness-actions:main-a4684d6b8361f75a829f4968d03deb7772cf0c28
+      shell: sh
+      env: 
+        RUN_ID: ${{ cloudbees.run_id }}
+        JOB_ID: ${{ job.id }}
+        STEP_ID: ${{ step.internal.id }}
+        DNS_URL: ${{ cloudbees.api.url }}
+        JWT_TOKEN: ${{ cloudbees.api.token }}
+      run: |
+        set -x
+        cd /app
+        ./harness_actions_app invoke -i '{"metaInfo":{"url":"${{ inputs.url }}","toolType":"HARNESSACTIONS","password":"${{ inputs.token }}","orgName":"${{ inputs.org-name }}","projectName":"${{ inputs.project-name }}","jobName":"${{ inputs.pipeline-name }}"}}'

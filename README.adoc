@@ -1,0 +1,72 @@
+= CloudBees action: Run a Harness pipeline
+
+Use this action to trigger a Harness pipeline.
+
+== Inputs
+
+[cols="2a,1a,1a,3a",options="header"]
+.Input details
+|===
+
+| Input name
+| Data type
+| Required?
+| Description
+
+| `url`
+| String
+| No
+| The Harness server URL.
+If not specified, uses `https://app.harness.io`.
+
+| `token`
+| String
+| Yes
+| The Harness API token.
+
+| `org-name`
+| String
+| Yes
+| The organization name associated with the pipeline.
+
+| `project-name`
+| String
+| Yes
+| The project name associated with the pipeline
+
+| `pipeline-name`
+| String
+| Yes
+| The pipeline name.
+|===
+
+== Usage example
+
+In your YAML file, add:
+
+[source,yaml]
+----
+
+jobs:
+  trigger-harness-workflow-using-action:
+    steps:
+    - name: Trigger Harness Pipeline using Cloudbees Harness Action
+      uses: cloudbees-io/harness-run-pipeline
+      with:
+        url: https://app.harness.io/
+        token: ${{ secrets.HARNESS_API_TOKEN }}
+        org-name: org01
+        project-name: project01
+        pipeline-name: Pipeline001
+
+----
+
+== License
+
+This code is made available under the 
+link:https://opensource.org/license/mit/[MIT license].
+
+== References
+
+* Learn more about link:https://docs.cloudbees.com/docs/cloudbees-saas-platform-actions/latest/[using actions in CloudBees workflows].
+* Learn about link:https://docs.cloudbees.com/docs/cloudbees-saas-platform/latest/[the CloudBees platform].
