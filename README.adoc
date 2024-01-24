@@ -1,6 +1,6 @@
 = CloudBees action: Run a Harness pipeline
 
-Use this action to trigger a Harness pipeline.
+Use this action to trigger a Harness pipeline. Harness is a CI/CD tool.
 
 == Inputs
 
@@ -16,8 +16,7 @@ Use this action to trigger a Harness pipeline.
 | `url`
 | String
 | No
-| The Harness server URL.
-If not specified, uses `https://app.harness.io`.
+| The Harness server URL. Default is `https://app.harness.io`.
 
 | `token`
 | String
@@ -27,17 +26,17 @@ If not specified, uses `https://app.harness.io`.
 | `org-name`
 | String
 | Yes
-| The organization name associated with the pipeline.
+| The Harness pipeline organization name.
 
 | `project-name`
 | String
 | Yes
-| The project name associated with the pipeline
+| The Harness pipeline project name.
 
 | `pipeline-name`
 | String
 | Yes
-| The pipeline name.
+| The Harness pipeline name.
 |===
 
 == Usage example
@@ -47,17 +46,15 @@ In your YAML file, add:
 [source,yaml]
 ----
 
-jobs:
-  trigger-harness-workflow-using-action:
     steps:
-    - name: Trigger Harness Pipeline using Cloudbees Harness Action
-      uses: cloudbees-io/harness-run-pipeline
+    - name: Run Harness pipeline
+      uses: cloudbees-io/harness-run-pipeline@v1
       with:
         url: https://app.harness.io/
-        token: ${{ secrets.HARNESS_API_TOKEN }}
+        token: ${{ secrets.HARNESS_TOKEN }}
         org-name: org01
         project-name: project01
-        pipeline-name: Pipeline001
+        pipeline-name: pipeline001
 
 ----
 
