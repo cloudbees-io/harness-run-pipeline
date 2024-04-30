@@ -25,7 +25,7 @@ runs:
   steps:
     - id: invoke-harness-action
       name: invoke-harness-action
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/harness-actions:main-a4684d6b8361f75a829f4968d03deb7772cf0c28
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/harness-actions:main-9da9e5d6608f4906cb9556e504eeb899b4bb662e
       shell: sh
       env: 
         RUN_ID: ${{ cloudbees.run_id }}
